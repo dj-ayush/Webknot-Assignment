@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gamex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=PT+Mono&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/home.css" />
+</head>
+<body>
+    <header>
+        <h1>EventX</h1>
+    </header>
+    <nav>
+        <a href="#home">HOME</a>&nbsp;&nbsp;&nbsp;
+        <a href="#events">EVENTS</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'manage_registrations' %}">MANAGE</a>&nbsp;&nbsp;&nbsp;
+        <a href="#about">ABOUT</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'profile' %}">PROFILE</a>&nbsp;&nbsp;&nbsp;
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">LOGOUT</button>
+        </form>
+    </nav>
+    <main>
+        <!-- Cover Image Section -->
+        <section id="home">
+            <img
+              class="coverimg"
+              src="/static/images/home.jpg"
+              width="100%"
+              alt=""
+            />
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <!-- Sports Events -->
+            {% if sports_events %}
+                <h2 class="textpos">Sports Events</h2>
+                <div class="outer">
+                    {% for event in sports_events %}
+                        <div class="inner">
+                            <h3>{{ event.name }}</h3>
+                            <a href="{% url 'register_event' event.id %}">
+                                <img src="{{ event.image.url }}" width="230px" height="300px" alt="{{ event.name }}" />
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- <hr class="textpos" /> -->
+            {% endif %}
+
+            <!-- Cultural Events -->
+            {% if cultural_events %}
+                <h2 class="textpos">Cultural Events</h2>
+                <div class="outer">
+                    {% for event in cultural_events %}
+                        <div class="inner">
+                            <h3>{{ event.name }}</h3>
+                            <a href="{% url 'register_event' event.id %}">
+                                <img src="{{ event.image.url }}" width="230px" height="300px" alt="{{ event.name }}" />
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- <hr class="textpos" /> -->
+            {% endif %}
+
+            <!-- Gaming Events -->
+            {% if gaming_events %}
+                <h2 class="textpos">Gaming Events</h2>
+                <div class="outer">
+                    {% for event in gaming_events %}
+                        <div class="inner">
+                            <h3>{{ event.name }}</h3>
+                            <a href="{% url 'register_event' event.id %}">
+                                <img src="{{ event.image.url }}" width="230px" height="300px" alt="{{ event.name }}" />
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about">
+            <h3 class="textpos">About Us</h3>
+            <p class="textpos">
+               <b>
+    Welcome to the official College Event Management Platform, your go-to solution for staying connected with all the exciting events happening on campus! Our mission is to unite the college community by organizing and promoting a wide range of events that cater to the diverse interests of students, faculty, and staff. Whether it’s sports competitions, cultural festivals, academic seminars, or social gatherings, our platform serves as a central hub where you can easily browse, register, and participate in events. We believe that extracurricular activities play an important role in personal growth, skill development, and creating lasting memories.
+</b>
+
+            </p>
+            <p class="textpos">
+                <b>Manage and participate in college events seamlessly...</b>
+            </p>
+            <hr class="textpos" />
+        </section>
+
+        <!-- Footer Section -->
+      <footer>
+    <br /><br />
+    <a href="javascript:void(0)">FAQ</a>&nbsp;&nbsp;
+    <a href="{% url 'contact' %}">Contact Us</a>&nbsp;&nbsp;
+    <a href="javascript:void(0)">Terms of Use</a>&nbsp;&nbsp;
+    <a href="javascript:void(0)">Privacy Policy</a>&nbsp;&nbsp;
+    <a href="javascript:void(0)">&copy; 2025 | College Event Management Platform</a>
+</footer>
+    </main>
+</body>
+</html>

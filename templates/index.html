@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management System</title>
+    <style>
+        html, body {
+            height: 100%; /* Ensure the body takes full height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column; /* Stack header, main, and footer */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #3f0160;
+            color: white;
+        }
+
+        .navbar {
+            background-color: #290c38; /* Background color of the navbar */
+            padding: 10px 0; /* Padding for the navbar */
+        }
+
+        .navbar ul {
+            list-style: none; /* Remove default list style */
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: center; /* Center the links */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        .navbar li {
+            margin: 0 15px; /* Space between items */
+        }
+
+        .navbar a {
+            color: white; /* Text color */
+            text-decoration: none; /* Remove underline */
+            padding: 8px 15px; /* Padding for clickable area */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .navbar a:hover {
+            background-color: #004494; /* Darker shade on hover */
+        }
+
+        .hero {
+            text-align: center;
+            margin: 0;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0px;
+        }
+
+        main {
+            flex: 1; /* Allow main content to grow */
+            display: flex;
+            flex-direction: column; /* Stack child elements vertically */
+            margin: 0;
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .login-card {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-card h2 {
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2f1d56;
+            color: white;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       <h1>Welcome to the College Event Management Platform</h1>
+<p>Your one-stop platform for managing, discovering, and participating in college events.</p>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <img src="/static/images/index.jpg" alt="College Events" class="hero-image">
+        </section>
+
+        <section id="login" class="login-options">
+            <div class="login-card">
+                <h2>User Login</h2>
+                <p>Join us to explore and register for upcoming events!</p>
+                <a href="{% url 'login' %}" class="btn">Login as User</a>
+            </div>
+            <div class="login-card">
+                <h2>Admin Login</h2>
+                <p>Manage events and view registrations!</p>
+                <a href="{% url 'admin_login' %}" class="btn">Login as Admin</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 College Event Management Platform. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register for {{ event.name }}</title>
+    <link rel="stylesheet" href="/static/css/event_reg.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-transform: uppercase;">Register for {{ event.name }}</h1>
+        <div class="content">
+            <div class="image-container">
+                <img src="{{ event.image.url }}" alt="{{ event.name }}" style="width:300px;height:auto;">
+            </div>
+            <div class="event-details">
+                <p><strong>Category:</strong> {{ event.category }}</p>
+                <p><strong>Start Date:</strong> {{ event.start_date }}</p>
+                <p><strong>End Date:</strong> {{ event.end_date }}</p>
+                <p>{{ event.description }}</p>
+            </div>
+            <div class="register-form">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }} <!-- Automatically generates form fields from UserRegistrationForm -->
+                    <div class="form-group">
+                        <button type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
