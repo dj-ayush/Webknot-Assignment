@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Event Management System</title>
+    {% load static %}
     <style>
         html, body {
-            height: 100%; /* Ensure the body takes full height */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            height: 100%;
+            margin: 0;
+            padding: 0;
             scroll-behavior: smooth;
         }
 
@@ -17,7 +18,7 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
-            flex-direction: column; /* Stack header, main, and footer */
+            flex-direction: column;
         }
 
         header {
@@ -28,32 +29,32 @@
         }
 
         .navbar {
-            background-color: #290c38; /* Background color of the navbar */
-            padding: 10px 0; /* Padding for the navbar */
+            background-color: #290c38;
+            padding: 10px 0;
         }
 
         .navbar ul {
-            list-style: none; /* Remove default list style */
-            display: flex; /* Use flexbox for horizontal layout */
-            justify-content: center; /* Center the links */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
         }
 
         .navbar li {
-            margin: 0 15px; /* Space between items */
+            margin: 0 15px;
         }
 
         .navbar a {
-            color: white; /* Text color */
-            text-decoration: none; /* Remove underline */
-            padding: 8px 15px; /* Padding for clickable area */
-            border-radius: 5px; /* Rounded corners */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         .navbar a:hover {
-            background-color: #004494; /* Darker shade on hover */
+            background-color: #004494;
         }
 
         .hero {
@@ -68,9 +69,9 @@
         }
 
         main {
-            flex: 1; /* Allow main content to grow */
+            flex: 1;
             display: flex;
-            flex-direction: column; /* Stack child elements vertically */
+            flex-direction: column;
             margin: 0;
         }
 
@@ -113,7 +114,7 @@
             padding: 10px;
             background-color: #2f1d56;
             color: white;
-            margin-top: auto; /* Push the footer to the bottom */
+            margin-top: auto;
         }
     </style>
 </head>
@@ -121,7 +122,7 @@
 <body>
     <header>
        <h1>Welcome to the College Event Management Platform</h1>
-<p>Your one-stop platform for managing, discovering, and participating in college events.</p>
+       <p>Your one-stop platform for managing, discovering, and participating in college events.</p>
     </header>
 
     <nav class="navbar">
@@ -132,7 +133,8 @@
 
     <main>
         <section class="hero">
-            <img src="/static/images/index.jpg" alt="College Events" class="hero-image">
+            <!-- CACHE-BUSTING VERSION PARAMETER ADDED -->
+            <img src="{% static 'images/index.jpg' %}?v=2" alt="College Events" class="hero-image">
         </section>
 
         <section id="login" class="login-options">
@@ -153,5 +155,4 @@
         <p>&copy; 2025 College Event Management Platform. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
